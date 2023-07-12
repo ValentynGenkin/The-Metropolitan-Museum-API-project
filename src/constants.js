@@ -8,3 +8,4 @@ export const MAIN_PARAGRAPH = 'main-paragraph';
 export const CATEGORY_LINK = 'category-link';
 export const LINKS_CLASS = 'links';
 export const FOOTER = 'footer';
+export const COVER_TEXT = 'cover-text';

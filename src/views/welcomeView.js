@@ -9,6 +9,7 @@ import {
   CATEGORY_LINK,
   LINKS_CLASS,
   FOOTER,
+  COVER_TEXT,
 } from '../constants.js';
 
 export const createWelcomeElement = () => {
@@ -16,19 +17,21 @@ export const createWelcomeElement = () => {
   element.id = `${WELCOME_PAGE_ELEMENT}`;
   element.innerHTML = String.raw`
   <nav id=${NAVIGATION}>
-    <button type="button">
-      <img id=${NAV_LOGO} alt="logo" href="./public/assets/logo.png">
-    </button>
-    <button type="button">1</button>
-    <button type="button">2</button>
-    <button type="button">3</button>
-    <button type="button">4</button>
+
+      <img id=${NAV_LOGO} alt="logo" src="./public/assets/logo.png">
+
+    <button type="button">Home</button>
+    <button type="button">About museum</button>
+    <button type="button">Departments</button>
+    <button type="button">Contact</button>
   </nav>
 
   <div id=${MAIN_COVER}>
-    <img id=${COVER_IMG} alt="cover" href="">
-    <h1 id=${MAIN_TITLE}>Main title</h1>
-    <p id=${MAIN_PARAGRAPH}>Main paragraph</p>
+    <img id=${COVER_IMG} alt="cover" src="./public/assets/cover.jpg">
+      <div id=${COVER_TEXT}>
+        <h1 id=${MAIN_TITLE}>Welcome to The Metropolitan Museum exhibition</h1>
+        <p id=${MAIN_PARAGRAPH}>The Metropolitan Museum of Art presents over 5,000 years of art from around the world for everyone to experience and enjoy</p>
+      </div>
   </div>
 
   <div id=${CATEGORY_LINK}>
@@ -54,5 +57,6 @@ export const createWelcomeElement = () => {
 
   <footer id=${FOOTER}>Valentyn Genkin HYF 2023</footer>
   `;
+
   return element;
 };

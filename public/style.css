@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&family=Montserrat&family=PT+Serif:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'PT Serif', serif;
+}
+body {
+  background-color: rgb(240, 237, 237);
+  display: flex;
+  justify-content: center;
+}
+
+#interface {
+  display: flex;
+  background-color: white;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 10px;
+}
+
+#welcome-page-element {
+  width: 100%;
+}
+
+#navigation-menu {
+  background-color: rgb(240, 117, 117);
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+#navigation-menu button {
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  font-size: 17px;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+#navigation-menu button:hover {
+  background-color: white;
+}
+
+#nav-logo {
+  height: 45px;
+  margin: 0 15px;
+}
+
+#main-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#cover-img {
+  width: 100%;
+}
+
+#cover-text {
+  padding: 15px;
+  margin: 25px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.776);
+  border-radius: 5px;
+  box-shadow: 0 0 15px 6px gray;
+}
+
+#main-title {
+  font-size: 35px;
+}
+
+#main-paragraph {
+  font-size: 20px;
+  max-width: 1200px;
+}
+
+#category-link {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.links {
+  min-width: 300px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 25px;
+}
+
+#footer {
+  height: 25px;
+  width: 100%;
+  background-color: rgb(81, 81, 81);
+  color: white;
+  text-align: center;
+  margin-top: 30px;
+}
