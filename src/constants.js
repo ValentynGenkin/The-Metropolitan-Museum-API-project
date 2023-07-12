@@ -1,0 +1,10 @@
+export const WELCOME_PAGE_ELEMENT = 'welcome-page-element';
+export const NAVIGATION = 'navigation-menu';
+export const NAV_LOGO = 'nav-logo';
+export const MAIN_COVER = 'main-cover';
+export const COVER_IMG = 'cover-img';
+export const MAIN_TITLE = 'main-title';
+export const MAIN_PARAGRAPH = 'main-paragraph';
+export const CATEGORY_LINK = 'category-link';
+export const LINKS_CLASS = 'links';
+export const FOOTER = 'footer';
