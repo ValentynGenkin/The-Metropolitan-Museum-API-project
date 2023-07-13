@@ -13,6 +13,7 @@ import {
   firstArticle,
   secondArticle,
   thirdArticle,
+  DEPARTMENTS_BTN,
 } from '../constants.js';
 
 export const createNavMenu = () => {
@@ -22,7 +23,7 @@ export const createNavMenu = () => {
   <img id=${NAV_LOGO} alt="logo" src="./public/assets/logo.png">
   <button type="button">Home</button>
   <button type="button">About museum</button>
-  <button type="button">Art departments</button>
+  <button id=${DEPARTMENTS_BTN} type="button">Art departments</button>
   <button type="button">Contact</button>
   `;
   return element;

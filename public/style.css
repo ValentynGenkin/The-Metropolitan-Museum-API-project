@@ -50,6 +50,21 @@ body {
   margin: 0 15px;
 }
 
+#department-menu {
+  position: absolute;
+  flex-direction: column;
+  max-width: 1200px;
+  background-color: rgb(240, 117, 117);
+  top: 60px;
+  z-index: 1;
+  list-style: none;
+}
+
+#department-menu li:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
 #main-cover {
   display: flex;
   flex-direction: column;
@@ -125,7 +140,7 @@ body {
 .links button {
   width: 150px;
   height: 30px;
-  margin: 0 auto;
+  margin: 10px auto;
   border-radius: 3px;
   border: 2px solid rgb(171, 171, 171);
   background-color: rgb(218, 217, 217);
