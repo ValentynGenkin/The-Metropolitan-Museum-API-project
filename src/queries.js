@@ -63,4 +63,13 @@ export function fetchSpecificDepartment() {
   });
 }
 
-export async function fetchDepartmentExhibits() {}
+export async function fetchDepartmentExhibits(exhibitIds) {
+  const exhibitQuery = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${exhibitIds}`;
+  try {
+    const response = await fetch(exhibitQuery);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}

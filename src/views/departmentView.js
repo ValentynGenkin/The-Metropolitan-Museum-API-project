@@ -1,7 +1,14 @@
-const arr = [];
+import {
+  NEXT_PAGE_BTN,
+  PREVIOUS_PAGE_BTN,
+  NAVIGATION_BTN,
+} from '../constants.js';
+import { fetchDepartmentExhibits } from '../queries.js';
+
+const exhibitsIdArr = [];
 
 export function grabDepartmentItemsId(data) {
-  arr.length = 0;
+  exhibitsIdArr.length = 0;
 
   const chunkSize = 12;
 
@@ -9,9 +16,19 @@ export function grabDepartmentItemsId(data) {
 
   for (let i = 0; i < innerArray.length; i += chunkSize) {
     const chunk = innerArray.slice(i, i + chunkSize);
-    arr.push(...[chunk]);
+    exhibitsIdArr.push(...[chunk]);
   }
-  console.log(arr);
+  console.log(exhibitsIdArr);
+}
+
+export function createNavigationBtn() {
+  const element = document.createElement('div');
+  element.id = `${NAVIGATION_BTN}`;
+  element.innerText = String.raw`
+  <button type="button id=${NEXT_PAGE_BTN}>Next page</button>
+  <button type="button id=${PREVIOUS_PAGE_BTN}>Previous page</button>
+  `;
+  return element;
 }
 
 export function createDepartmentPageElement() {}
