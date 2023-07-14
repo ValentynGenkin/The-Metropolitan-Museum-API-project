@@ -13,6 +13,7 @@ export const DEPARTMENTS_BTN = 'departments-btn';
 export const NEXT_PAGE_BTN = 'next-page-btn';
 export const PREVIOUS_PAGE_BTN = 'previous-page-bnt';
 export const NAVIGATION_BTN = 'navigation-btn';
+export const DEPARTMENT_CONTAINER = 'dep-container';
 
 export const firstArticle =
   'The principal goals of the Arms and Armor Department are to collect, preserve, research, publish, and exhibit distinguished examples representing the art of the armorer, swordsmith, and gunmaker.';

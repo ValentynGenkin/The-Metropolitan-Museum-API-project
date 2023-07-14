@@ -1,4 +1,5 @@
 import { grabDepartmentItemsId } from './views/departmentView.js';
+import { initDepartmentPage } from './pages/departmentPage.js';
 
 const departmentsUrl =
   'https://collectionapi.metmuseum.org/public/collection/v1/departments';
@@ -56,12 +57,15 @@ export function fetchSpecificDepartment() {
         const response = await fetch(specificDepartmentUrl);
         const data = await response.json();
         grabDepartmentItemsId(data);
+        initDepartmentPage();
       } catch (error) {
         console.error(error);
       }
     });
   });
 }
+
+// ----------------------------------------------------------------
 
 export async function fetchDepartmentExhibits(exhibitIds) {
   const exhibitQuery = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${exhibitIds}`;
