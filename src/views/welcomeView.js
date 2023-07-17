@@ -14,6 +14,9 @@ import {
   secondArticle,
   thirdArticle,
   DEPARTMENTS_BTN,
+  HOME_BTN,
+  SEARCH_BTN,
+  SEARCH_INPUT,
 } from '../constants.js';
 
 export const createNavMenu = () => {
@@ -21,10 +24,12 @@ export const createNavMenu = () => {
   element.id = `${NAVIGATION}`;
   element.innerHTML = String.raw`
   <img id=${NAV_LOGO} alt="logo" src="./public/assets/logo.png">
-  <button type="button">Home</button>
+  <button id=${HOME_BTN} type="button">Home</button>
   <button type="button">About museum</button>
   <button id=${DEPARTMENTS_BTN} type="button">Art departments</button>
   <button type="button">Contact</button>
+  <input type="text" id=${SEARCH_INPUT} placeholder="Search"></input>
+  <button id="${SEARCH_BTN}" type="button"><img alt="search" src="./public/assets/search.png" value=""></button>
   `;
   return element;
 };

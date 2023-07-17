@@ -3,8 +3,10 @@ import {
   PREVIOUS_PAGE_BTN,
   NAVIGATION_BTN,
   DEPARTMENT_CONTAINER,
+  DEPARTMENT_PAGE,
 } from '../constants.js';
 import { fetchDepartmentExhibits } from '../queries.js';
+import { createItemElement } from './exhibitView.js';
 
 export const exhibitsIdArr = [];
 
@@ -23,24 +25,23 @@ export function createNavigationBtn() {
   return element;
 }
 
-//-----------------------------------------
-let startIndex = 0;
-const chunk = 12;
-
 export async function createDepartmentPageElement(array) {
   const nextBtn = document.getElementById(NEXT_PAGE_BTN);
   const previousBtn = document.getElementById(PREVIOUS_PAGE_BTN);
-  const parent = document.getElementById('interface');
+  const parent = document.getElementById(DEPARTMENT_PAGE);
 
   const departmentContainer = document.createElement('div');
   departmentContainer.id = `${DEPARTMENT_CONTAINER}`;
   parent.appendChild(departmentContainer);
-  const items = array.flat();
+
+  let startIndex = 0;
+  const chunk = 12;
 
   async function handleClick(direction) {
     const department = document.getElementById(DEPARTMENT_CONTAINER);
     department.innerHTML = '';
 
+    const items = array.flat();
     if (direction === 'next') {
       startIndex += chunk;
     } else if (direction === 'previous') {
@@ -50,7 +51,6 @@ export async function createDepartmentPageElement(array) {
       }
     }
 
-    console.log(startIndex);
     const endIndex = startIndex + chunk;
 
     const fetchPromises = [];
@@ -62,12 +62,32 @@ export async function createDepartmentPageElement(array) {
 
     for (const data of responses) {
       const element = document.createElement('div');
-      element.innerHTML = data.objectName;
-      department.appendChild(element);
+      element.setAttribute('objectID', data.objectID);
+
+      if (!data.isPublicDomain) {
+        data.primaryImageSmall = '../public/assets/no-img.png';
+      }
+      if (data.message === 'Not a valid object') {
+      } else {
+        element.innerHTML = String.raw`
+      <a href="#" class="item-link"> 
+      <img src="${data.primaryImageSmall}" alt="${data.title}">
+      <span>${data.title}</span>
+      <span>${data.artistDisplayName}</span>
+      <span>${data.objectDate}</span>
+      </a>
+      `;
+        department.appendChild(element);
+        element.addEventListener('click', () => {
+          createItemElement(data);
+          document.getElementById(DEPARTMENT_PAGE).style.display = 'none';
+        });
+      }
     }
   }
 
   await handleClick('previous');
+
   nextBtn.addEventListener('click', () => handleClick('next'));
   previousBtn.addEventListener('click', () => handleClick('previous'));
 }

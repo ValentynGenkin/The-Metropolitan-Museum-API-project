@@ -1,5 +1,10 @@
 import { grabDepartmentItemsId } from './views/departmentView.js';
 import { initDepartmentPage } from './pages/departmentPage.js';
+import {
+  DEPARTMENT_CONTAINER,
+  DEPARTMENT_PAGE,
+  NAVIGATION_BTN,
+} from './constants.js';
 
 const departmentsUrl =
   'https://collectionapi.metmuseum.org/public/collection/v1/departments';
@@ -51,6 +56,14 @@ export function fetchSpecificDepartment() {
 
   departmentList.forEach((element) => {
     element.addEventListener('click', async () => {
+      if (document.getElementById(DEPARTMENT_PAGE)) {
+        document.getElementById(DEPARTMENT_PAGE).remove();
+      }
+      if (document.getElementById(NAVIGATION_BTN)) {
+        document.getElementById(NAVIGATION_BTN).remove();
+      }
+      document.getElementById('department-menu').style.display = 'none';
+
       try {
         const departmentId = element.getAttribute('departmentId');
         const specificDepartmentUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=${departmentId}&q=cat`;
@@ -71,6 +84,17 @@ export async function fetchDepartmentExhibits(exhibitIds) {
   const exhibitQuery = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${exhibitIds}`;
   try {
     const response = await fetch(exhibitQuery);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function fetchSearch(request) {
+  const searchRequest = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${request}`;
+  try {
+    const response = await fetch(searchRequest);
     const data = await response.json();
     return data;
   } catch (error) {
