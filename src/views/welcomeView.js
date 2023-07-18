@@ -24,12 +24,16 @@ export const createNavMenu = () => {
   element.id = `${NAVIGATION}`;
   element.innerHTML = String.raw`
   <img id=${NAV_LOGO} alt="logo" src="./public/assets/logo.png">
-  <button id=${HOME_BTN} type="button">Home</button>
-  <button type="button">About museum</button>
+  <button id="burger-menu" type="button"><img alt="search" src="./public/assets/burger.png" value=""></button>
+  <a href="#interface"><img id="up" alt="up" src="./public/assets/up.png"></a>
+  <div id="menu-hide-block">
+  <button id=${HOME_BTN} type="button" style = "display:none">Home</button>
+  <button type="button" id="about">About museum</button>
   <button id=${DEPARTMENTS_BTN} type="button">Art departments</button>
-  <button type="button">Contact</button>
   <input type="text" id=${SEARCH_INPUT} placeholder="Search"></input>
   <button id="${SEARCH_BTN}" type="button"><img alt="search" src="./public/assets/search.png" value=""></button>
+  
+  </div>
   `;
   return element;
 };
@@ -54,21 +58,21 @@ export const createWelcomeElement = () => {
         <h3>Arms and Armor</h3>
         <img alt="preview-img" src="./public/assets/1.jpeg">
         <p>${firstArticle}</p>
-        <button type="button">Explore</button>
+        <button type="button" id="link-1">Explore</button>
       </div>
 
       <div class=${LINKS_CLASS}>
         <h3>European Paintings</h3>
         <img alt="preview-img" src="./public/assets/2.jpeg">
         <p>${secondArticle}</p>
-        <button type="button">Explore</button>
+        <button type="button" id="link-2">Explore</button>
       </div>
 
       <div class=${LINKS_CLASS}>
         <h3>American Decorative Arts</h3>
         <img alt="preview-img" src="./public/assets/3.jpeg">
         <p>${thirdArticle}</p>
-        <button type="button">Explore</button>
+        <button type="button" id="link-3">Explore</button>
       </div>
 
     </div>
@@ -83,3 +87,13 @@ export const createFooterElement = () => {
   element.textContent = 'Valentyn Genkin HYF 2023';
   return element;
 };
+
+export function aboutPage(response) {
+  const element = document.createElement('div');
+  element.id = 'about-page';
+  element.innerHTML = String.raw`
+  <img alt="TMM-logo" src="${response.thumbnail.source}">
+  <a href="${response.content_urls.desktop.page}">Wikipedia Link</a>
+  `;
+  return element;
+}

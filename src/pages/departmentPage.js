@@ -6,6 +6,7 @@ import {
   DEPARTMENT_PAGE,
   FOOTER,
   SEARCH_INPUT,
+  NAVIGATION_BTN,
 } from '../constants.js';
 
 export function initDepartmentPage() {
@@ -16,16 +17,21 @@ export function initDepartmentPage() {
   if (document.getElementById('item-element')) {
     document.getElementById('item-element').remove();
   }
-
   const departmentPage = document.createElement('div');
+
   departmentPage.id = DEPARTMENT_PAGE;
 
   const footer = document.getElementById(FOOTER);
+  if (!document.getElementById(NAVIGATION_BTN)) {
+    const navigationBtn = createNavigationBtn();
 
-  const navigationBtn = createNavigationBtn();
-  departmentPage.appendChild(navigationBtn);
+    const interfaceBlok = document.getElementById('interface');
+
+    interfaceBlok.insertBefore(navigationBtn, interfaceBlok.children[1]);
+  }
 
   const pageInterface = document.getElementById('interface');
+
   pageInterface.insertBefore(departmentPage, footer);
 
   createDepartmentPageElement(exhibitsIdArr);

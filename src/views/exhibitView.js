@@ -1,16 +1,14 @@
 import {
   ITEM_ELEMENT,
-  DEPARTMENT_CONTAINER,
   DEPARTMENT_PAGE,
   FOOTER,
+  NAVIGATION_BTN,
+  SEARCH_ELEMENT,
 } from '../constants.js';
 
 export function createItemElement(data) {
   const element = document.createElement('div');
   element.id = `${ITEM_ELEMENT}`;
-  if (!data.isPublicDomain) {
-    data.primaryImageSmall = '../public/assets/no-img.png';
-  }
 
   element.innerHTML = String.raw`
   <div>
@@ -50,5 +48,14 @@ export function createItemElement(data) {
   closeBtn.addEventListener('click', () => {
     element.remove();
     document.getElementById(DEPARTMENT_PAGE).style.display = 'block';
+    document.getElementById(NAVIGATION_BTN).style.display = 'flex';
+    document.getElementById(SEARCH_ELEMENT).style.display = 'block';
   });
+  if (!data.isPublicDomain) {
+    data.primaryImageSmall = '../public/assets/no-img.png';
+    const notice = document.createElement('p');
+    notice.textContent =
+      'Due to copyright restrictions this image cannot be shown';
+    document.getElementById(ITEM_ELEMENT).prepend(notice);
+  }
 }
