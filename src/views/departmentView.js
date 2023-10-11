@@ -35,7 +35,6 @@ export function createNavigationBtn() {
 }
 
 export async function createDepartmentPageElement(array) {
-  console.log('hi');
   const nextBtn = document.getElementById(NEXT_PAGE_BTN);
   const previousBtn = document.getElementById(PREVIOUS_PAGE_BTN);
   const parent = document.getElementById(DEPARTMENT_PAGE);
@@ -77,7 +76,7 @@ export async function createDepartmentPageElement(array) {
       element.className = 'item-card';
       element.setAttribute('objectID', data.objectID);
       if (!data.isPublicDomain) {
-        data.primaryImageSmall = '../public/assets/no-img.png';
+        data.primaryImageSmall = './public/assets/no-img.png';
       }
       if (data.message === 'Not a valid object') {
       } else {
