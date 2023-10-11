@@ -52,7 +52,7 @@ export function createItemElement(data) {
     document.getElementById(SEARCH_ELEMENT).style.display = 'block';
   });
   if (!data.isPublicDomain) {
-    data.primaryImageSmall = '../public/assets/no-img.png';
+    data.primaryImageSmall = './public/assets/no-img.png';
     const notice = document.createElement('p');
     notice.textContent =
       'Due to copyright restrictions this image cannot be shown';
